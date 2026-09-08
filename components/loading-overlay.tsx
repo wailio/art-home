@@ -11,12 +11,12 @@ const LoadingContext = createContext<{ setLoading: (loading: boolean) => void } 
 export function LuxuryLoadingOverlay({ visible }: { visible: boolean }) {
   return (
     <div
-      className={`luxury-loading fixed inset-0 z-[100] flex items-center justify-center bg-[#1e1912] transition-opacity duration-500 ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`}
+      className={`luxury-loading pointer-events-none fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
       aria-hidden={!visible}
       aria-label="Chargement en cours"
       role="status"
     >
-      <div className="relative flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64">
+      <div className="pointer-events-none relative flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64">
         <svg className="absolute inset-0 h-full w-full animate-orbit" viewBox="0 0 240 240" fill="none" aria-hidden="true">
           <path d="M32 120a88 88 0 1 1 176 0" stroke="#b18a3c" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
