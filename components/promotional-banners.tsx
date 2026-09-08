@@ -8,22 +8,22 @@ export default function PromotionalBanners() {
     <section className="w-full" id="promotional-banners">
       <div className="h-12 bg-[#0A0A0A] md:h-20 md:bg-white"></div>
       
-      <div className="grid w-full overflow-hidden md:relative md:block md:h-[500px] lg:h-[600px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
         {/* Banner 1: Perfect Armchair */}
         <Reveal variant="pop" delay={0}>
-        <div className="promo-card relative h-96 w-full items-center justify-center overflow-hidden md:flex md:absolute md:inset-0 md:h-full md:w-full bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+        <div className="promo-card relative h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
           {/* Background Image */}
-          <div className="absolute inset-0 overflow-hidden opacity-30 md:skew-x-[8deg]">
+          <div className="absolute inset-0 opacity-30">
             <img
               src="/products/2-canapes.jpg"
               alt="Perfect Armchair"
-              className="h-full w-full object-cover md:ml-[-15%] md:w-[130%] md:skew-x-[8deg]"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="overlay" />
 
           {/* Content Overlay */}
-          <div className="content relative z-10 flex h-full w-full flex-col justify-center px-8 md:w-1/2 md:px-12">
+          <div className="content relative z-10 px-8 md:px-12 flex flex-col justify-center h-full w-full">
             <div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white mb-2 tracking-wide">
                 FAUTEUIL<br />PARFAIT
@@ -43,19 +43,19 @@ export default function PromotionalBanners() {
 
         {/* Banner 2: Table Sets with Chairs */}
         <Reveal variant="pop" delay={150}>
-        <div className="promo-card relative h-96 w-full items-center justify-center overflow-hidden md:flex md:absolute md:inset-0 md:h-full md:w-full bg-gradient-to-b from-amber-900 via-yellow-900 to-amber-900">
+        <div className="promo-card relative h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-amber-900 via-yellow-900 to-amber-900">
           {/* Background Image */}
-          <div className="absolute inset-0 overflow-hidden opacity-40 md:skew-x-[-8deg]">
+          <div className="absolute inset-0 opacity-40">
             <img
               src="/products/1-salle-a-manger.jpg"
               alt="Table Sets with Chairs"
-              className="h-full w-full object-cover md:ml-[-15%] md:w-[130%] md:skew-x-[-8deg]"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="overlay" />
 
           {/* Content Overlay */}
-          <div className="content relative z-10 ml-auto flex h-full w-full flex-col justify-center px-8 md:w-1/2 md:px-12">
+          <div className="content relative z-10 px-8 md:px-12 flex flex-col justify-center h-full w-full">
             <div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white mb-2 tracking-wide">
                 ENSEMBLES<br />DE TABLE<br />AVEC<br />CHAISES
