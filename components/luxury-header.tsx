@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
-import { ChevronDown, Phone } from "lucide-react"
+import { ChevronDown, Facebook, Instagram, Music2, Phone } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
 
 const productLinks = [
@@ -37,16 +37,23 @@ export default function LuxuryHeader() {
 
   return (
     <>
-      {isHomePage && <div aria-hidden="true" className="hidden h-[186px] md:block" />}
+      {isHomePage && <div aria-hidden="true" className="hidden h-[196px] md:block" />}
       <header dir="ltr" className={`${isHomePage ? "fixed left-0 top-0" : "relative"} z-50 hidden w-full md:block`}>
       <div className={`flex h-10 items-center justify-center px-6 font-[var(--font-manrope)] text-sm font-medium ${topBarClass}`}>
-        <span>Exclusive Furniture Sale Up To 50% Off</span>
+        <div className="relative flex w-full max-w-7xl items-center justify-center">
+          <div className="absolute left-0 flex items-center gap-3" aria-label="Réseaux sociaux">
+            <Link href="https://facebook.com/p/Ozmeuble-100092552539793" target="_blank" rel="noreferrer" aria-label="Facebook" className="transition-colors hover:text-[#b18a3c]"><Facebook className="h-4 w-4" /></Link>
+            <Link href="https://instagram.com/oz.meuble" target="_blank" rel="noreferrer" aria-label="Instagram" className="transition-colors hover:text-[#b18a3c]"><Instagram className="h-4 w-4" /></Link>
+            <Link href="https://tiktok.com/@oz.meuble" target="_blank" rel="noreferrer" aria-label="TikTok" className="transition-colors hover:text-[#b18a3c]"><Music2 className="h-4 w-4" /></Link>
+          </div>
+          <span>Exclusive Furniture Sale Up To 50% Off</span>
+        </div>
       </div>
 
       <div className={`border-b border-black/5 transition-colors duration-300 ${mainBarClass}`}>
-        <div className="mx-auto flex h-[90px] max-w-7xl items-center justify-between px-8">
-          <Link href="/contact" className={`group flex items-center gap-3 ${contactTextColor}`}>
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7f4ee] text-[#151515] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#061632] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(6,22,50,0.2)]">
+        <div className="mx-auto flex h-[100px] max-w-7xl items-center justify-between px-8">
+          <Link href="/contact" className={`group flex items-center gap-3 ${contactTextColor} group-hover:text-[#4a3812] group-focus-visible:text-[#4a3812]`}>
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7f4ee] text-[#151515] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#4a3812] group-hover:text-[#f7f4ee] group-focus-visible:bg-[#4a3812] group-focus-visible:text-[#f7f4ee] group-hover:shadow-[0_8px_20px_rgba(74,56,18,0.2)]">
               <Phone className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="flex flex-col font-[var(--font-manrope)] leading-tight">
@@ -56,11 +63,11 @@ export default function LuxuryHeader() {
           </Link>
 
           <Link href="/" className="group absolute left-1/2 -translate-x-1/2">
-            <Image src={isHomePage ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_10_22-KOhJSAKVHVOq5AvPDYA3drwkgb4EPc.png" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_13_18-JKCNNNWk9NEpwDsRXjO1QIuzRA1eC3.png"} alt="Oz meuble" width={180} height={70} className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <Image src={isHomePage ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/whiteart-CSZR8FXConpLYf1EUnin48SZVbyaFQ.png" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/final-nobg-small-D3CvxrWoRG2wuLP6bom4faIF3Qii60.png"} alt="ArtHome" width={1280} height={1024} className="h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           <div className="ml-auto flex items-center gap-5">
-            <Link href="/all-products" className="rounded-sm bg-[#b18a3c] px-6 py-3 font-[var(--font-manrope)] text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-[#061632]">DÉCOUVRIR</Link>
+            <Link href="/all-products" className="h-9 rounded-none bg-[#b18a3c] px-6 font-[var(--font-manrope)] text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-[#061632] md:hidden">DÉCOUVRIR</Link>
             <LanguageSwitcher textColor={textColor} compact />
           </div>
         </div>
