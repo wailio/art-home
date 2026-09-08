@@ -37,14 +37,14 @@ export default function LuxuryHeader() {
 
   return (
     <>
-      {isHomePage && <div aria-hidden="true" className="hidden h-[186px] md:block" />}
+      {isHomePage && <div aria-hidden="true" className="hidden h-[316px] md:block" />}
       <header dir="ltr" className={`${isHomePage ? "fixed left-0 top-0" : "relative"} z-50 hidden w-full md:block`}>
       <div className={`flex h-10 items-center justify-center px-6 font-[var(--font-manrope)] text-sm font-medium ${topBarClass}`}>
         <span>Exclusive Furniture Sale Up To 50% Off</span>
       </div>
 
       <div className={`border-b border-black/5 transition-colors duration-300 ${mainBarClass}`}>
-        <div className="mx-auto flex h-[90px] max-w-7xl items-center justify-between px-8">
+        <div className="mx-auto flex h-[220px] max-w-7xl items-center justify-between px-8">
           <Link href="/contact" className={`group flex items-center gap-3 ${contactTextColor}`}>
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7f4ee] text-[#151515] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#061632] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(6,22,50,0.2)]">
               <Phone className="h-5 w-5" aria-hidden="true" />
@@ -56,7 +56,7 @@ export default function LuxuryHeader() {
           </Link>
 
           <Link href="/" className="group absolute left-1/2 -translate-x-1/2">
-            <Image src={isHomePage ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_10_22-KOhJSAKVHVOq5AvPDYA3drwkgb4EPc.png" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_13_18-JKCNNNWk9NEpwDsRXjO1QIuzRA1eC3.png"} alt="Oz meuble" width={180} height={70} className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <Image src={isHomePage ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%208%20sept.%202026%2C%2018_04_10-oe2G6zu2D6kvoMxWZ7Z73rYFvhOLGA.png" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_13_18-JKCNNNWk9NEpwDsRXjO1QIuzRA1eC3.png"} alt="ArtHome" width={1254} height={1254} className="h-48 w-48 object-contain transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           <div className="ml-auto flex items-center gap-5">

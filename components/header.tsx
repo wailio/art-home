@@ -33,16 +33,16 @@ export default function Header() {
   return (
     <header className="md:hidden fixed top-0 left-0 right-0 z-50 flex justify-center pt-2 px-3">
       <nav
-        className={`max-w-6xl w-full px-3 py-2 flex items-center justify-between rounded-md font-[var(--font-manrope)] tracking-[0.05em] transition-all duration-300 ${navClasses}`}
+        className={`max-w-6xl w-full px-3 py-3 flex items-center justify-between rounded-md font-[var(--font-manrope)] tracking-[0.05em] transition-all duration-300 ${navClasses}`}
       >
         <Link href="/" className="site-logo flex items-center gap-2">
           <span className="group inline-block cursor-pointer">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_10_22-ucFMD3WoFMtvfk7sdSc5FVXGfVMNaN.png"
-              alt="Oz meuble"
-              width={150}
-              height={54}
-              className="h-10 w-auto object-contain transition-transform duration-[450ms] ease-out group-hover:scale-[1.08]"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%208%20sept.%202026%2C%2018_04_10-oe2G6zu2D6kvoMxWZ7Z73rYFvhOLGA.png"
+              alt="ArtHome"
+              width={1254}
+              height={1254}
+              className="h-20 w-20 object-contain transition-transform duration-[450ms] ease-out group-hover:scale-[1.04]"
             />
           </span>
         </Link>

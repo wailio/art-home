@@ -24,17 +24,17 @@ export default function HomepageLuxuryHeader() {
       </div>
 
       {/* Main Navigation Bar - Overlay on hero background */}
-      <div className="w-full py-5 px-6 bg-transparent">
+      <div className="w-full py-8 px-6 bg-transparent">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="site-logo flex items-center flex-shrink-0 hover:opacity-80 transition-opacity">
             <span className="group inline-block cursor-pointer">
               <Image
-                src="/logo-oz-meuble-luxury.png"
-                alt="Oz meuble"
-                width={400}
-                height={120}
-                className="h-24 w-auto transition-transform duration-[450ms] ease-out group-hover:scale-[1.15] group-hover:rotate-[8deg]"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%208%20sept.%202026%2C%2018_04_10-oe2G6zu2D6kvoMxWZ7Z73rYFvhOLGA.png"
+                alt="ArtHome"
+                width={1254}
+                height={1254}
+                className="h-36 w-36 object-contain transition-transform duration-[450ms] ease-out group-hover:scale-[1.06]"
               />
             </span>
           </Link>
