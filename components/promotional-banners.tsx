@@ -8,16 +8,16 @@ export default function PromotionalBanners() {
     <section className="w-full" id="promotional-banners">
       <div className="h-12 bg-[#0A0A0A] md:h-20 md:bg-white"></div>
       
-      <div className="relative h-[768px] overflow-hidden md:h-[500px] lg:h-[600px]">
+      <div className="grid w-full overflow-hidden md:relative md:block md:h-[500px] lg:h-[600px]">
         {/* Banner 1: Perfect Armchair */}
         <Reveal variant="pop" delay={0}>
-        <div className="promo-card absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 [clip-path:polygon(0_0,55%_0,45%_100%,0_100%)]">
+        <div className="promo-card relative h-96 w-full items-center justify-center overflow-hidden md:flex md:absolute md:inset-0 md:h-full md:w-full bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
           {/* Background Image */}
-          <div className="absolute inset-0 opacity-30 md:[clip-path:polygon(0_0,55%_0,45%_100%,0_100%)]">
+          <div className="absolute inset-0 overflow-hidden opacity-30 md:skew-x-[8deg]">
             <img
               src="/products/2-canapes.jpg"
               alt="Perfect Armchair"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover md:ml-[-15%] md:w-[130%] md:skew-x-[8deg]"
             />
           </div>
           <div className="overlay" />
@@ -43,13 +43,13 @@ export default function PromotionalBanners() {
 
         {/* Banner 2: Table Sets with Chairs */}
         <Reveal variant="pop" delay={150}>
-        <div className="promo-card absolute inset-0 z-0 flex items-center justify-center overflow-hidden bg-gradient-to-b from-amber-900 via-yellow-900 to-amber-900 [clip-path:polygon(55%_0,100%_0,100%_100%,45%_100%)]">
+        <div className="promo-card relative h-96 w-full items-center justify-center overflow-hidden md:flex md:absolute md:inset-0 md:h-full md:w-full bg-gradient-to-b from-amber-900 via-yellow-900 to-amber-900">
           {/* Background Image */}
-          <div className="absolute inset-0 opacity-40 md:[clip-path:polygon(55%_0,100%_0,100%_100%,45%_100%)]">
+          <div className="absolute inset-0 overflow-hidden opacity-40 md:skew-x-[-8deg]">
             <img
               src="/products/1-salle-a-manger.jpg"
               alt="Table Sets with Chairs"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover md:ml-[-15%] md:w-[130%] md:skew-x-[-8deg]"
             />
           </div>
           <div className="overlay" />
