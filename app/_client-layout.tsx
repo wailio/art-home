@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Analytics } from "@vercel/analytics/next"
 import { LanguageProvider } from "@/components/language-provider"
+import { LoadingProvider } from "@/components/loading-overlay"
 
 function ScrollToTop() {
   const pathname = usePathname()
@@ -24,9 +25,11 @@ export default function ClientLayout({
 }>) {
   return (
     <LanguageProvider>
-      <ScrollToTop />
-      {children}
-      <Analytics />
+      <LoadingProvider>
+        <ScrollToTop />
+        {children}
+        <Analytics />
+      </LoadingProvider>
     </LanguageProvider>
   )
 }
