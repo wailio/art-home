@@ -13,8 +13,8 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="relative overflow-hidden bg-white py-6 md:py-10 lg:py-12">
-      <div className="mx-auto max-w-6xl px-2 md:px-6">
+    <section className="relative overflow-hidden bg-white py-4 md:py-6 lg:py-8">
+      <div className="mx-auto max-w-7xl px-0 md:px-2">
         <div className="mb-3 text-center md:mb-6">
           <Reveal>
             <div className="mx-auto mb-2 inline-flex items-center gap-2 rounded-full border border-black/20 px-4 py-1.5 text-[11px] tracking-[2px] text-[#333333]">
@@ -25,7 +25,7 @@ export default function Categories() {
           </Reveal>
         </div>
 
-        <div className="-mx-2 flex snap-x snap-mandatory justify-start gap-3 overflow-x-auto px-2 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:justify-center md:gap-x-8 md:gap-y-4 md:overflow-visible md:px-0 md:pb-0 lg:gap-x-10">
+        <div className="-mx-2 flex snap-x snap-mandatory justify-start gap-3 overflow-x-auto px-2 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:justify-center md:gap-x-4 md:gap-y-3 md:overflow-visible md:px-0 md:pb-0 lg:gap-x-6">
           {categories.map((cat, idx) => (
             <Reveal key={cat.label} variant="pop" delay={idx * 80}>
               <Link href={cat.href} className="group flex w-20 shrink-0 snap-start flex-col items-center gap-1 text-center md:w-28 md:gap-1">
