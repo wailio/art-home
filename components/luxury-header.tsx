@@ -45,8 +45,8 @@ export default function LuxuryHeader() {
 
       <div className={`border-b border-black/5 transition-colors duration-300 ${mainBarClass}`}>
         <div className="mx-auto flex h-[100px] max-w-7xl items-center justify-between px-8">
-          <Link href="/contact" className={`group flex items-center gap-3 ${contactTextColor}`}>
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7f4ee] text-[#151515] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#061632] group-hover:text-white group-hover:shadow-[0_8px_20px_rgba(6,22,50,0.2)]">
+          <Link href="/contact" className={`group flex items-center gap-3 ${contactTextColor} group-hover:text-[#4a3812] group-focus-visible:text-[#4a3812]`}>
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7f4ee] text-[#151515] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#f7f4ee] group-hover:text-[#4a3812] group-focus-visible:bg-[#f7f4ee] group-focus-visible:text-[#4a3812] group-hover:shadow-[0_8px_20px_rgba(74,56,18,0.2)]">
               <Phone className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="flex flex-col font-[var(--font-manrope)] leading-tight">
