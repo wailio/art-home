@@ -6,7 +6,7 @@ import AllProductsClientContent from "./client-content"
 import { Reveal } from "@/components/Reveal"
 
 export const metadata = {
-  title: "Tous les Produits | Oz meuble",
+  title: "Tous les Produits | Art Home",
   description: "Découvrez notre collection complète de meubles de luxe",
 }
 

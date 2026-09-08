@@ -22,7 +22,7 @@ export default function InstagramFeed() {
             Suivez-nous sur Instagram
           </h2>
           <p className="text-gray-400 text-lg">
-            @oz.meuble
+            @art_home_tex
           </p>
         </div>
 

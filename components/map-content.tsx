@@ -11,7 +11,7 @@ export default function MapContent() {
       }}
     >
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.8154402813816!2d3.0383021793457026!3d36.72699350000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad003e85b45b%3A0x8a15d318fb0b3f72!2sOz%20meubles!5e0!3m2!1sfr!2sdz!4v1788624522482!5m2!1sfr!2sdz"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25590.335787715285!2d3.033506074316419!3d36.703536500000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fadd347613117%3A0xfc8ed47908ab92e9!2zQXJ0IGhvbWUg2KjZitiqINin2YTZgdmG!5e0!3m2!1sfr!2sdz!4v1788902144829!5m2!1sfr!2sdz"
         width="100%"
         height="100%"
         style={{ border: "0" }}

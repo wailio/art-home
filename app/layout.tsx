@@ -15,8 +15,8 @@ const _notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-ar
 const _amiri = Amiri({ subsets: ["arabic"], weight: ["400", "700"], variable: "--font-amiri" })
 
 export const metadata: Metadata = {
-  title: "Oz meuble | Mobilier à Birkhadem",
-  description: "Découvrez Oz meuble à Birkhadem : mobilier élégant, conseils personnalisés et pièces pour transformer votre intérieur.",
+  title: "Art Home | Mobilier à Birkhadem",
+  description: "Découvrez Art Home à Birkhadem : mobilier de luxe, rideaux modernes, aménagement et décoration sur mesure.",
   generator: "v0.app",
   icons: {
     icon: [
