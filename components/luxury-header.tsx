@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
-import { ChevronDown, Phone } from "lucide-react"
+import { ChevronDown, Facebook, Instagram, Music2, Phone } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
 
 const productLinks = [
@@ -40,7 +40,14 @@ export default function LuxuryHeader() {
       {isHomePage && <div aria-hidden="true" className="hidden h-[196px] md:block" />}
       <header dir="ltr" className={`${isHomePage ? "fixed left-0 top-0" : "relative"} z-50 hidden w-full md:block`}>
       <div className={`flex h-10 items-center justify-center px-6 font-[var(--font-manrope)] text-sm font-medium ${topBarClass}`}>
-        <span>Exclusive Furniture Sale Up To 50% Off</span>
+        <div className="relative flex w-full max-w-7xl items-center justify-center">
+          <div className="absolute left-0 flex items-center gap-3" aria-label="Réseaux sociaux">
+            <Link href="https://facebook.com/p/Ozmeuble-100092552539793" target="_blank" rel="noreferrer" aria-label="Facebook" className="transition-colors hover:text-[#b18a3c]"><Facebook className="h-4 w-4" /></Link>
+            <Link href="https://instagram.com/oz.meuble" target="_blank" rel="noreferrer" aria-label="Instagram" className="transition-colors hover:text-[#b18a3c]"><Instagram className="h-4 w-4" /></Link>
+            <Link href="https://tiktok.com/@oz.meuble" target="_blank" rel="noreferrer" aria-label="TikTok" className="transition-colors hover:text-[#b18a3c]"><Music2 className="h-4 w-4" /></Link>
+          </div>
+          <span>Exclusive Furniture Sale Up To 50% Off</span>
+        </div>
       </div>
 
       <div className={`border-b border-black/5 transition-colors duration-300 ${mainBarClass}`}>
