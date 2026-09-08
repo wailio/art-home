@@ -312,24 +312,6 @@ body {
   --sidebar-ring: oklch(0.85 0.02 70);
 }
 
-@keyframes orbit-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes orbit-rotate-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
-}
-
-.animate-orbit { animation: orbit-rotate 2.8s linear infinite; }
-.animate-orbit-reverse { animation: orbit-rotate-reverse 3.8s linear infinite; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-orbit,
-  .animate-orbit-reverse { animation-play-state: paused; }
-}
-
 @theme inline {
   --font-sans: "Geist", "Geist Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
