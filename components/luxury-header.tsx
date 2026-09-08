@@ -56,7 +56,7 @@ export default function LuxuryHeader() {
           </Link>
 
           <Link href="/" className="group absolute left-1/2 -translate-x-1/2">
-            <Image src={isHomePage ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/whiteart-CSZR8FXConpLYf1EUnin48SZVbyaFQ.png" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2014_13_18-JKCNNNWk9NEpwDsRXjO1QIuzRA1eC3.png"} alt="ArtHome" width={1254} height={1016} className="h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <Image src={isHomePage ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/whiteart-CSZR8FXConpLYf1EUnin48SZVbyaFQ.png" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-nobg-small-gem2dl9BQccrcNJky4p78EuwAQ30oT.png"} alt="ArtHome" width={1280} height={1024} className="h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           <div className="ml-auto flex items-center gap-5">
