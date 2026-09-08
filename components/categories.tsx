@@ -14,7 +14,7 @@ const categories = [
 export default function Categories() {
   return (
     <section className="relative overflow-hidden bg-white py-6 md:py-10 lg:py-12">
-      <div className="mx-auto max-w-6xl px-2 md:px-6">
+      <div className="mx-auto max-w-5xl px-0 md:px-2">
         <div className="mb-3 text-center md:mb-6">
           <Reveal>
             <div className="mx-auto mb-2 inline-flex items-center gap-2 rounded-full border border-black/20 px-4 py-1.5 text-[11px] tracking-[2px] text-[#333333]">
