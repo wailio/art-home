@@ -60,7 +60,7 @@ export default function LuxuryHeader() {
           </Link>
 
           <div className="ml-auto flex items-center gap-5">
-            <Link href="/all-products" className="rounded-sm bg-[#b18a3c] px-6 py-3 font-[var(--font-manrope)] text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-[#061632]">DÉCOUVRIR</Link>
+            <Link href="/all-products" className="h-9 rounded-none bg-[#b18a3c] px-6 font-[var(--font-manrope)] text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-[#061632]">DÉCOUVRIR</Link>
             <LanguageSwitcher textColor={textColor} compact />
           </div>
         </div>
