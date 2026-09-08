@@ -13,7 +13,7 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="relative overflow-hidden bg-white py-6 md:py-10 lg:py-12">
+    <section className="relative overflow-hidden bg-white py-3 md:py-5 lg:py-6">
       <div className="mx-auto max-w-5xl px-0 md:px-2">
         <div className="mb-3 text-center md:mb-6">
           <Reveal>
