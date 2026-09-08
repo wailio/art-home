@@ -13,7 +13,7 @@ export default function PromotionalBanners() {
         <Reveal variant="pop" delay={0}>
         <div className="promo-card relative h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
           {/* Background Image */}
-          <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 opacity-30 md:[clip-path:polygon(0_0,55%_0,45%_100%,0_100%)]">
             <img
               src="/products/2-canapes.jpg"
               alt="Perfect Armchair"
@@ -45,7 +45,7 @@ export default function PromotionalBanners() {
         <Reveal variant="pop" delay={150}>
         <div className="promo-card relative h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-amber-900 via-yellow-900 to-amber-900">
           {/* Background Image */}
-          <div className="absolute inset-0 opacity-40">
+          <div className="absolute inset-0 opacity-40 md:[clip-path:polygon(55%_0,100%_0,100%_100%,45%_100%)]">
             <img
               src="/products/1-salle-a-manger.jpg"
               alt="Table Sets with Chairs"
