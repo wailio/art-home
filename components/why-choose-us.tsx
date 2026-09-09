@@ -64,12 +64,12 @@ export default function WhyChooseUs() {
   return (
     <section 
       ref={containerRef}
-      className="bg-[#111827] px-4 py-8 md:bg-white md:px-8 md:py-24 lg:px-16"
+      className="bg-white px-4 py-8 md:bg-white md:px-8 md:py-24 lg:px-16"
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 md:mb-16 text-center">
           <Reveal>
-            <h2 className="text-xl font-serif font-semibold text-white md:text-[44px] md:text-[#0a0a0a]">
+            <h2 className="text-xl font-serif font-semibold text-[#1f2937] md:text-[44px] md:text-[#0a0a0a]">
               Pourquoi <span className="text-[#a98661] md:hidden">nous choisir</span><span className="hidden md:inline text-[#a98661]">choisir Art Home</span>
             </h2>
           </Reveal>
@@ -78,35 +78,35 @@ export default function WhyChooseUs() {
         {/* Mobile Layout - Simple List */}
         <div className="md:hidden space-y-0">
           <Reveal variant="pop" delay={0}>
-          <div className="bg-[#1B2433] p-3 border-b border-gray-600 flex items-start gap-3">
+          <div className="bg-[#e5e7eb] p-3 border-b border-[#cbd5e1] flex items-start gap-3">
             <div className="flex-shrink-0 pt-1">
-              <div className="text-xl text-[#a98661] icon-3d transition-transform duration-200">✦</div>
+              <div className="text-xl text-[#6b7280] icon-3d transition-transform duration-200">✦</div>
             </div>
             <div>
-              <h3 className="text-xs font-semibold text-white mb-0.5">Solutions Complètes</h3>
-              <p className="text-[11px] text-gray-300">Gestion complète de votre projet</p>
+              <h3 className="text-xs font-semibold text-[#1f2937] mb-0.5">Solutions Complètes</h3>
+              <p className="text-[11px] text-[#4b5563]">Gestion complète de votre projet</p>
             </div>
           </div>
           </Reveal>
           <Reveal variant="pop" delay={100}>
-          <div className="bg-[#1B2433] p-3 border-b border-gray-600 flex items-start gap-3">
+          <div className="bg-[#e5e7eb] p-3 border-b border-[#cbd5e1] flex items-start gap-3">
             <div className="flex-shrink-0 pt-1">
-              <div className="text-xl text-[#a98661] icon-3d transition-transform duration-200">◆</div>
+              <div className="text-xl text-[#6b7280] icon-3d transition-transform duration-200">◆</div>
             </div>
             <div>
-              <h3 className="text-xs font-semibold text-white mb-0.5">Support 24/7</h3>
-              <p className="text-[11px] text-gray-300">Assistance continue et fiable</p>
+              <h3 className="text-xs font-semibold text-[#1f2937] mb-0.5">Support 24/7</h3>
+              <p className="text-[11px] text-[#4b5563]">Assistance continue et fiable</p>
             </div>
           </div>
           </Reveal>
           <Reveal variant="pop" delay={200}>
-          <div className="bg-[#1B2433] p-3 flex items-start gap-3">
+          <div className="bg-[#e5e7eb] p-3 flex items-start gap-3">
             <div className="flex-shrink-0 pt-1">
-              <div className="text-xl text-[#a98661] icon-3d transition-transform duration-200">★</div>
+              <div className="text-xl text-[#6b7280] icon-3d transition-transform duration-200">★</div>
             </div>
             <div>
-              <h3 className="text-xs font-semibold text-white mb-0.5">Qualité Supérieure</h3>
-              <p className="text-[11px] text-gray-300">Meilleurs matériaux garantis</p>
+              <h3 className="text-xs font-semibold text-[#1f2937] mb-0.5">Qualité Supérieure</h3>
+              <p className="text-[11px] text-[#4b5563]">Meilleurs matériaux garantis</p>
             </div>
           </div>
           </Reveal>
