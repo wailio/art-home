@@ -66,7 +66,7 @@ export default function InspirationsPage() {
               >
                 <div className="relative h-28 md:h-80 overflow-hidden bg-gray-300">
                   <img
-                    src={item.images[0]}
+                    src="/images/art-home-living-room.png"
                     alt={item.name}
                     className="inspiration-image w-full h-full object-cover transition-transform duration-700"
                   />
