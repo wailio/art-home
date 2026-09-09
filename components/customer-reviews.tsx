@@ -4,23 +4,11 @@ import { useEffect, useState, useRef } from 'react'
 import { Star } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 
-const reviews = [
-  { image: "/review-rahim.png", author: "Rahim Hamdi", role: "1 avis", rating: 5, years: "il y a 3 ans", text: "Soyez les bienvenus" },
-  { image: "/review-mehdi.png", author: "Mehdi", role: "", rating: 5, years: "il y a 3 mois", text: "" },
-  { image: "/review-zakaria.png", author: "ZAKARIA BENAMARA", role: "1 avis · 1 photo", rating: 2, years: "il y a 8 mois", text: "Bon produit" },
-  { image: "/review-illyes.png", author: "Illyes Hamdi", role: "1 avis", rating: 5, years: "il y a 3 ans", text: "" },
-]
-
 const mobileReviews = [
-  { author: "redouane naoui", rating: 5, text: "Très bien reçu 10/10 merci mon fils" },
-  { author: "Omar Merfoud", rating: 5, text: "J'ai bien reçu ma commande merci de votre professionnalisme" },
-  { author: "Naoui Lila", rating: 5, text: "Très bien reçu merci" },
-  { author: "Islam Abriche", rating: 5, text: "Merci pour votre sérieux" },
-  { author: "Kouider Khadidja", rating: 5, text: "Les pro bravo Oz" },
-  { author: "Isseri Nassereddine", rating: 5, text: "10/10" },
-  { author: "Rania Dirar", rating: 5, text: "10/10" },
-  { author: "Khalouf Aziz", rating: 4, text: "Meilleur site" },
-  { author: "Moncef djelloul Djafer cherif", rating: 5, text: "Vous avez un livreur très charmant" },
+  { author: "Adem", rating: 5, years: "il y a 4 mois", text: "" },
+  { author: "Aura Mode", rating: 5, years: "il y a 5 mois", text: "" },
+  { author: "Melissa Chikh chouk", rating: 5, years: "il y a 5 mois", text: "" },
+  { author: "سميرة حموش", rating: 5, years: "il y a 5 mois", text: "" },
 ]
 
 export default function CustomerReviews() {
@@ -65,7 +53,7 @@ export default function CustomerReviews() {
                   <div className="min-w-0 flex-1"><p className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#807b72]">LAISSEZ-NOUS UN AVIS SUR</p><p className="font-sans text-xl leading-5 text-[#F0EDE6]">Google</p></div>
                 </div>
                 <div className="flex gap-0.5" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-4 w-4 fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Mobenia+Meuble" target="_blank" rel="noopener noreferrer" className="flex h-10 w-full items-center justify-between bg-[#b4883d] px-3 font-sans text-[9px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#956e2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b4883d] focus-visible:ring-offset-2"><span>DONNER MON AVIS</span><span className="text-xl font-normal" aria-hidden="true">→</span></a>
+                <a href="https://www.google.com/maps/place/Art+home+%D8%A8%D9%8A%D8%AA+%D8%A7%D9%84%D9%81%D9%86%E2%80%AD/@36.7035365,3.06904,17z/data=!4m8!3m7!1s0x128fadd347613117:0xfc8ed47908ab92e9!8m2!3d36.7035365!4d3.0716149!9m1!1b1!16s%2Fg%2F11z4bc2zzg?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="flex h-10 w-full items-center justify-between bg-[#b4883d] px-3 font-sans text-[9px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#956e2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b4883d] focus-visible:ring-offset-2"><span>DONNER MON AVIS</span><span className="text-xl font-normal" aria-hidden="true">→</span></a>
               </div>
             </div>
           </div>
@@ -85,7 +73,7 @@ export default function CustomerReviews() {
                   {Array.from({ length: review.rating }, (_, index) => <Star key={index} className="h-4 w-4 fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}
                 </div>
                 <p className="font-sans text-sm leading-6 text-[#d0d0d0]">&quot;{review.text}&quot;</p>
-                <p className="mt-auto font-sans text-sm font-bold text-[#F0EDE6]">{review.author}</p>
+                <div className="mt-auto"><p className="font-sans text-sm font-bold text-[#F0EDE6]">{review.author}</p><p className="font-sans text-xs text-[#807b72]">{review.years}</p></div>
               </div>
             ))}
           </div>
@@ -123,7 +111,7 @@ export default function CustomerReviews() {
                 ))}
               </div>
               <p className="text-pretty font-sans text-sm leading-6 text-[#B0B0B0]">&quot;{mobileReviews[currentIndex].text}&quot;</p>
-              <p className="mt-6 font-sans text-sm font-bold text-[#F0EDE6]">{mobileReviews[currentIndex].author}</p>
+              <div className="mt-6"><p className="font-sans text-sm font-bold text-[#F0EDE6]">{mobileReviews[currentIndex].author}</p><p className="font-sans text-xs text-[#807b72]">{mobileReviews[currentIndex].years}</p></div>
             </div>
             <button
               onClick={() => setCurrentIndex((previous) => (previous - 1 + mobileReviews.length) % mobileReviews.length)}
