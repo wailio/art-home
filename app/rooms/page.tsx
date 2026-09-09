@@ -121,7 +121,7 @@ export default function RoomsPage() {
               >
                 <div className="relative h-44 md:h-72 overflow-hidden bg-gray-200">
                   <img
-                    src={room.image}
+                    src="/images/art-home-living-room.png"
                     alt={room.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

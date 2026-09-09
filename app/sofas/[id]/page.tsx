@@ -124,7 +124,7 @@ export default function SofaProductPage({ params }: { params: { id: string } }) 
             <div className="flex items-center justify-center">
               <div className="w-full max-h-[600px] flex items-center justify-center bg-white overflow-hidden">
                 <img
-                  src={product.image || "/placeholder.svg"}
+                  src="/images/art-home-living-room.png"
                   alt={product.name}
                   className="w-full h-full object-contain"
                 />
