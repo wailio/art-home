@@ -115,7 +115,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Reveal delay={0}>
-                <h2 className="mb-6 flex items-center gap-2 text-2xl font-serif font-bold text-white md:text-3xl"><span>Notre Mission</span><img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%205%20sept.%202026%2C%2020_34_37-Mqegv5FASGDxVXeyP2jrZFPmFwa8qZ.png" alt="Logo Art Home bleu et doré" className="h-8 w-8 object-contain md:hidden" /></h2>
+                <h2 className="mb-6 flex items-center gap-2 text-2xl font-serif font-bold text-white md:text-3xl"><span>Notre Mission</span><img src="/images/art-favicon.png" alt="Logo Art Home bleu et doré" className="h-8 w-8 object-contain md:hidden" /></h2>
               </Reveal>
               <Reveal delay={150}>
                 <p className="text-gray-300 text-xs md:text-lg leading-relaxed mb-4 font-light">
@@ -131,7 +131,7 @@ export default function AboutPage() {
             <Reveal delay={450} variant="scale" className="hidden items-center justify-center md:flex">
               <div className="mission-logo-float">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%205%20sept.%202026%2C%2020_34_37-CnNMJdzyiktjxJXNQIAeZNTzqvawuP.png"
+                  src="/images/art-favicon.png"
                   alt="Logo Art Home bleu et doré"
                   className="mission-logo-sway h-auto w-full max-w-[220px] object-contain"
                 />
@@ -186,7 +186,7 @@ export default function AboutPage() {
               }}
             >
               <Image
-                src="/about-history.jpg"
+                src="/images/art-home-storefront.png"
                 alt="Our Story"
                 width={500}
                 height={400}

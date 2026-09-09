@@ -33,7 +33,7 @@ export default function LuxuryHeader() {
   const contactTextColor = isDarkHeaderPage ? "text-white" : "text-[#151515]"
   const topBarClass = "bg-[#151515] text-white"
   const mainBarClass = isDarkHeaderPage ? "bg-[#111111]/95 backdrop-blur-md" : "bg-white"
-  const navBarClass = "bg-[#f7f4ee] text-[#151515]"
+  const navBarClass = isHomePage ? "bg-white text-[#151515]" : "bg-[#34383d] text-white"
 
   return (
     <>
