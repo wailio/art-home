@@ -186,7 +186,7 @@ export default function AboutPage() {
               }}
             >
               <Image
-                src="/images/art-home-storefront.png"
+                src="/images/art-favicon.png"
                 alt="Our Story"
                 width={500}
                 height={400}
