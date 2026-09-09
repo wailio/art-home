@@ -13,14 +13,14 @@ export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   const heroImages = [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2012_15_38-ye34WJAFK3GR0tIqBfnFy1JS0UDcJj.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2012_16_37-TNaBrKckdroA215hmxpiycAdOG9oqH.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2012_14_34-4axChhGKGaydPICnyvS1nv64ttu5nZ.png",
+    "/images/home-hero-salon-1.png",
+    "/images/home-hero-salon-2.png",
+    "/images/home-hero-salon-3.png",
   ]
   const mobileHeroImages = [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2015_29_05-l5LeXa2w1pUu9z0XmQeRAj0iVFod6p.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2015_22_17-qKgHgkm28cuO4oSdZop4eWHqprxi3l.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%206%20sept.%202026%2C%2015_23_31-iGTuZIc74u5RKJy48NXiDSHJySl5Ow.png",
+    "/images/home-hero-salon-1.png",
+    "/images/home-hero-salon-2.png",
+    "/images/home-hero-salon-3.png",
   ]
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 pb-8 text-center md:px-6 md:pb-0">
           <div className="flex max-w-3xl flex-col items-center">
             <Reveal delay={0}>
-              <p className="font-sans text-[4px] font-semibold tracking-[1.5px] text-white [text-shadow:1px_0_0_#c9a24b,-1px_0_0_#c9a24b,0_1px_0_#c9a24b,0_-1px_0_#c9a24b] md:text-[13px] md:tracking-[5px]">OZ MEUBLE</p>
+              <p className="font-sans text-[4px] font-semibold tracking-[1.5px] text-white [text-shadow:1px_0_0_#c9a24b,-1px_0_0_#c9a24b,0_1px_0_#c9a24b,0_-1px_0_#c9a24b] md:text-[13px] md:tracking-[5px]">ART HOME</p>
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-1 text-balance leading-none md:mt-[22px]">
