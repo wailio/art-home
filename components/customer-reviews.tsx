@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, type PointerEvent } from 'react'
 import { Star } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 
@@ -13,7 +13,42 @@ const mobileReviews = [
 
 export default function CustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [desktopIndex, setDesktopIndex] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [desktopDragOffset, setDesktopDragOffset] = useState(0)
+  const desktopDragStart = useRef<number | null>(null)
+  const desktopDragOrigin = useRef(0)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const desktopReviews = mobileReviews.map((review) => ({
+    ...review,
+    text: review.text || 'Une expérience magnifique, un mobilier élégant et un service attentif. Nous sommes ravis de notre choix.',
+  }))
+
+  const moveDesktopReview = (direction: 1 | -1) => {
+    setDesktopIndex((previous) => (previous + direction + desktopReviews.length) % desktopReviews.length)
+  }
+
+  const handleDesktopPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    desktopDragStart.current = event.clientX
+    desktopDragOrigin.current = desktopDragOffset
+    setIsDragging(true)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handleDesktopPointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (desktopDragStart.current === null) return
+    setDesktopDragOffset(desktopDragOrigin.current + event.clientX - desktopDragStart.current)
+  }
+
+  const handleDesktopPointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (desktopDragStart.current !== null) {
+      const distance = event.clientX - desktopDragStart.current
+      if (Math.abs(distance) > 40) moveDesktopReview(distance < 0 ? 1 : -1)
+    }
+    desktopDragStart.current = null
+    setDesktopDragOffset(0)
+    setIsDragging(false)
+  }
   useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 767px)").matches
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -37,23 +72,33 @@ export default function CustomerReviews() {
   }
 
   return (
-    <section dir="ltr" id="offres" className="bg-[#0A0A0A] px-4 py-12 md:px-6 md:py-20">
+    <section dir="ltr" id="offres" className="bg-[#0A0A0A] px-4 py-12 md:bg-[#f7f4ee] md:px-6 md:py-20">
       <div className="max-w-7xl mx-auto">
         <Reveal>
-          <div className="mb-4 flex h-auto items-start justify-center md:mb-8 md:h-56">
+          <div className="mb-4 flex h-auto items-start justify-center md:mb-0 md:h-auto">
             <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl">AVIS CLIENTS</h2>
-            <div className="hidden w-full items-start justify-between md:flex" aria-label="Laisser un avis Google">
-              <div className="pl-4 pt-4 lg:pl-10">
-                <h2 className="font-serif text-4xl font-normal leading-tight text-[#F0EDE6] lg:text-5xl">Ce Que Disent Nos Clients</h2>
-                <div className="mt-6 h-px w-14 bg-[#F0EDE6]" />
+            <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20" aria-label="Avis clients">
+              <div className="relative flex h-[360px] items-end justify-center overflow-hidden">
+                <div className="absolute bottom-5 h-44 w-60 rounded-full bg-[#ebe5db]" aria-hidden="true" />
+                <img src="/chair.png" alt="Fauteuil et décoration Art Home" className="relative z-10 h-[360px] w-full object-contain object-bottom drop-shadow-[0_16px_14px_rgba(90,65,40,0.1)]" />
               </div>
-              <div className="flex w-[220px] flex-col gap-2 rounded-[5px] border border-[#3b3325] bg-[#171717] px-4 py-3">
-                <div className="flex items-start gap-3">
-                  <img src="/google-logo.png" alt="Google" className="mt-1 h-5 w-5 shrink-0 object-contain" />
-                  <div className="min-w-0 flex-1"><p className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#807b72]">LAISSEZ-NOUS UN AVIS SUR</p><p className="font-sans text-xl leading-5 text-[#F0EDE6]">Google</p></div>
+              <div className="max-w-[520px] pb-1">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
+                <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
+                <div className="mt-6 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
+                <div className="relative mt-5 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
+                  <div className={`flex ${isDragging ? '' : 'transition-transform duration-500 ease-out'}`} style={{ transform: `translateX(calc(-${desktopIndex * 100}% + ${desktopDragOffset}px))` }}>
+                    {desktopReviews.map((review) => (
+                      <article key={review.author} className="w-full shrink-0 pr-6">
+                        <p className="min-h-[62px] max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{review.text}&quot;</p>
+                        <div className="mt-7 border-t border-[#ddd7cd] pt-7">
+                          <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b4883d] font-serif text-sm text-[#fffaf2]" aria-hidden="true">{review.author.slice(0, 2).toUpperCase()}</div><div><p className="font-sans text-[13px] font-semibold text-[#202020]">{review.author}</p><p className="mt-0.5 font-sans text-[11px] text-[#8b8780]">{review.years}</p></div><span className="ml-auto pr-2 font-serif text-6xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex gap-0.5" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-4 w-4 fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <a href="https://www.google.com/maps/place/Art+home+%D8%A8%D9%8A%D8%AA+%D8%A7%D9%84%D9%81%D9%86%E2%80%AD/@36.7035365,3.06904,17z/data=!4m8!3m7!1s0x128fadd347613117:0xfc8ed47908ab92e9!8m2!3d36.7035365!4d3.0716149!9m1!1b1!16s%2Fg%2F11z4bc2zzg?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="flex h-10 w-full items-center justify-between bg-[#b4883d] px-3 font-sans text-[9px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#956e2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b4883d] focus-visible:ring-offset-2"><span>DONNER MON AVIS</span><span className="text-xl font-normal" aria-hidden="true">→</span></a>
+                <div className="mt-4 flex items-center gap-3"><button type="button" onClick={() => moveDesktopReview(-1)} aria-label="Avis précédent" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">←</button><div className="flex gap-1.5" aria-label="Choisir un avis">{desktopReviews.map((review, index) => <button type="button" key={review.author} onClick={() => setDesktopIndex(index)} aria-label={`Afficher l'avis de ${review.author}`} aria-current={index === desktopIndex ? 'true' : undefined} className={`h-1.5 rounded-full transition-all ${index === desktopIndex ? 'w-5 bg-[#b4883d]' : 'w-1.5 bg-[#d7d0c5]'}`} />)}</div><button type="button" onClick={() => moveDesktopReview(1)} aria-label="Avis suivant" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">→</button></div>
               </div>
             </div>
           </div>
@@ -61,7 +106,7 @@ export default function CustomerReviews() {
 
         <Reveal delay={100}>
         {/* Desktop - Horizontal Scroll with Mouse Hover Controls */}
-        <div className="hidden md:block relative group">
+        <div className="hidden">
           <div
             ref={scrollContainerRef}
             className="flex gap-5 overflow-hidden scroll-smooth px-0"
