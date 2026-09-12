@@ -24,6 +24,17 @@ export default function CustomerReviews() {
     text: review.text || 'Une expérience magnifique, un mobilier élégant et un service attentif. Nous sommes ravis de notre choix.',
   }))
 
+  useEffect(() => {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches
+    if (!isDesktop) return
+
+    const interval = window.setInterval(() => {
+      setDesktopIndex((previous) => (previous + 1) % desktopReviews.length)
+    }, 4000)
+
+    return () => window.clearInterval(interval)
+  }, [desktopReviews.length])
+
   const moveDesktopReview = (direction: 1 | -1) => {
     setDesktopIndex((previous) => (previous + direction + desktopReviews.length) % desktopReviews.length)
   }
