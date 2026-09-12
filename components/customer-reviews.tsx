@@ -37,23 +37,24 @@ export default function CustomerReviews() {
   }
 
   return (
-    <section dir="ltr" id="offres" className="bg-[#0A0A0A] px-4 py-12 md:px-6 md:py-20">
+    <section dir="ltr" id="offres" className="bg-[#0A0A0A] px-4 py-12 md:bg-[#f7f4ee] md:px-6 md:py-20">
       <div className="max-w-7xl mx-auto">
         <Reveal>
-          <div className="mb-4 flex h-auto items-start justify-center md:mb-8 md:h-56">
+          <div className="mb-4 flex h-auto items-start justify-center md:mb-0 md:h-auto">
             <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl">AVIS CLIENTS</h2>
-            <div className="hidden w-full items-start justify-between md:flex" aria-label="Laisser un avis Google">
-              <div className="pl-4 pt-4 lg:pl-10">
-                <h2 className="font-serif text-4xl font-normal leading-tight text-[#F0EDE6] lg:text-5xl">Ce Que Disent Nos Clients</h2>
-                <div className="mt-6 h-px w-14 bg-[#F0EDE6]" />
+            <div className="hidden w-full md:grid md:grid-cols-[0.95fr_1.15fr] md:items-center md:gap-16 lg:gap-24" aria-label="Avis clients">
+              <div className="relative flex h-[430px] items-end justify-center overflow-hidden">
+                <div className="absolute bottom-8 h-56 w-72 rounded-full bg-[#ebe5db]" aria-hidden="true" />
+                <img src="/chair.png" alt="Fauteuil et décoration Art Home" className="relative z-10 h-[430px] w-full object-contain object-bottom drop-shadow-[0_18px_16px_rgba(90,65,40,0.12)]" />
               </div>
-              <div className="flex w-[220px] flex-col gap-2 rounded-[5px] border border-[#3b3325] bg-[#171717] px-4 py-3">
-                <div className="flex items-start gap-3">
-                  <img src="/google-logo.png" alt="Google" className="mt-1 h-5 w-5 shrink-0 object-contain" />
-                  <div className="min-w-0 flex-1"><p className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#807b72]">LAISSEZ-NOUS UN AVIS SUR</p><p className="font-sans text-xl leading-5 text-[#F0EDE6]">Google</p></div>
+              <div className="pb-2">
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1.5 font-sans text-xs text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
+                <h2 className="max-w-[540px] font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-[#171717] lg:text-[46px]">Beautiful Furniture Trusted By Modern Families</h2>
+                <div className="mt-8 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-5 w-5 fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
+                <p className="mt-6 max-w-[540px] font-sans text-[15px] leading-6 text-[#5f5c57]">&quot;Premium craftsmanship, timeless designs, and outstanding customer service made this one of the best furniture purchases we&apos;ve ever made for our home interiors.&quot;</p>
+                <div className="mt-12 border-t border-[#ddd7cd] pt-10">
+                  <div className="flex items-center gap-3"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#b4883d] font-serif text-lg text-[#fffaf2]" aria-hidden="true">OB</div><div><p className="font-sans text-sm font-semibold text-[#202020]">Olivia Bennett</p><p className="mt-1 font-sans text-xs text-[#8b8780]">Homeowner</p></div><span className="ml-auto pr-2 font-serif text-7xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
                 </div>
-                <div className="flex gap-0.5" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-4 w-4 fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <a href="https://www.google.com/maps/place/Art+home+%D8%A8%D9%8A%D8%AA+%D8%A7%D9%84%D9%81%D9%86%E2%80%AD/@36.7035365,3.06904,17z/data=!4m8!3m7!1s0x128fadd347613117:0xfc8ed47908ab92e9!8m2!3d36.7035365!4d3.0716149!9m1!1b1!16s%2Fg%2F11z4bc2zzg?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="flex h-10 w-full items-center justify-between bg-[#b4883d] px-3 font-sans text-[9px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#956e2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b4883d] focus-visible:ring-offset-2"><span>DONNER MON AVIS</span><span className="text-xl font-normal" aria-hidden="true">→</span></a>
               </div>
             </div>
           </div>
@@ -61,7 +62,7 @@ export default function CustomerReviews() {
 
         <Reveal delay={100}>
         {/* Desktop - Horizontal Scroll with Mouse Hover Controls */}
-        <div className="hidden md:block relative group">
+        <div className="hidden">
           <div
             ref={scrollContainerRef}
             className="flex gap-5 overflow-hidden scroll-smooth px-0"
