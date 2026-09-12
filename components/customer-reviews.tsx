@@ -15,19 +15,14 @@ export default function CustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [desktopIndex, setDesktopIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [desktopDragOffset, setDesktopDragOffset] = useState(0)
   const desktopDragStart = useRef<number | null>(null)
+  const desktopDragOrigin = useRef(0)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const desktopReviews = mobileReviews.map((review) => ({
     ...review,
     text: review.text || 'Une expérience magnifique, un mobilier élégant et un service attentif. Nous sommes ravis de notre choix.',
   }))
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setDesktopIndex((previous) => (previous + 1) % desktopReviews.length)
-    }, 4000)
-    return () => window.clearInterval(interval)
-  }, [desktopReviews.length])
 
   const moveDesktopReview = (direction: 1 | -1) => {
     setDesktopIndex((previous) => (previous + direction + desktopReviews.length) % desktopReviews.length)
@@ -35,15 +30,23 @@ export default function CustomerReviews() {
 
   const handleDesktopPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     desktopDragStart.current = event.clientX
+    desktopDragOrigin.current = desktopDragOffset
     setIsDragging(true)
     event.currentTarget.setPointerCapture(event.pointerId)
   }
 
+  const handleDesktopPointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (desktopDragStart.current === null) return
+    setDesktopDragOffset(desktopDragOrigin.current + event.clientX - desktopDragStart.current)
+  }
+
   const handleDesktopPointerUp = (event: PointerEvent<HTMLDivElement>) => {
-    if (desktopDragStart.current !== null && Math.abs(event.clientX - desktopDragStart.current) > 40) {
-      moveDesktopReview(event.clientX < desktopDragStart.current ? 1 : -1)
+    if (desktopDragStart.current !== null) {
+      const distance = event.clientX - desktopDragStart.current
+      if (Math.abs(distance) > 40) moveDesktopReview(distance < 0 ? 1 : -1)
     }
     desktopDragStart.current = null
+    setDesktopDragOffset(0)
     setIsDragging(false)
   }
   useEffect(() => {
@@ -83,8 +86,8 @@ export default function CustomerReviews() {
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
                 <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
                 <div className="mt-6 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <div className="relative mt-5 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
-                  <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${desktopIndex * 100}%)` }}>
+                <div className="relative mt-5 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
+                  <div className={`flex ${isDragging ? '' : 'transition-transform duration-500 ease-out'}`} style={{ transform: `translateX(calc(-${desktopIndex * 100}% + ${desktopDragOffset}px))` }}>
                     {desktopReviews.map((review) => (
                       <article key={review.author} className="w-full shrink-0 pr-6">
                         <p className="min-h-[62px] max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{review.text}&quot;</p>
