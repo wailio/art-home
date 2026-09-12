@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, type PointerEvent } from 'react'
 import { Star } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 
@@ -13,7 +13,39 @@ const mobileReviews = [
 
 export default function CustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [desktopIndex, setDesktopIndex] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const desktopDragStart = useRef<number | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const desktopReviews = mobileReviews.map((review) => ({
+    ...review,
+    text: review.text || 'Une expérience magnifique, un mobilier élégant et un service attentif. Nous sommes ravis de notre choix.',
+  }))
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setDesktopIndex((previous) => (previous + 1) % desktopReviews.length)
+    }, 4000)
+    return () => window.clearInterval(interval)
+  }, [desktopReviews.length])
+
+  const moveDesktopReview = (direction: 1 | -1) => {
+    setDesktopIndex((previous) => (previous + direction + desktopReviews.length) % desktopReviews.length)
+  }
+
+  const handleDesktopPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    desktopDragStart.current = event.clientX
+    setIsDragging(true)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handleDesktopPointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (desktopDragStart.current !== null && Math.abs(event.clientX - desktopDragStart.current) > 40) {
+      moveDesktopReview(event.clientX < desktopDragStart.current ? 1 : -1)
+    }
+    desktopDragStart.current = null
+    setIsDragging(false)
+  }
   useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 767px)").matches
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -42,18 +74,21 @@ export default function CustomerReviews() {
         <Reveal>
           <div className="mb-4 flex h-auto items-start justify-center md:mb-0 md:h-auto">
             <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl">AVIS CLIENTS</h2>
-            <div className="hidden w-full md:grid md:grid-cols-[0.95fr_1.15fr] md:items-center md:gap-16 lg:gap-24" aria-label="Avis clients">
-              <div className="relative flex h-[430px] items-end justify-center overflow-hidden">
-                <div className="absolute bottom-8 h-56 w-72 rounded-full bg-[#ebe5db]" aria-hidden="true" />
-                <img src="/chair.png" alt="Fauteuil et décoration Art Home" className="relative z-10 h-[430px] w-full object-contain object-bottom drop-shadow-[0_18px_16px_rgba(90,65,40,0.12)]" />
+            <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20" aria-label="Avis clients">
+              <div className="relative flex h-[360px] items-end justify-center overflow-hidden">
+                <div className="absolute bottom-5 h-44 w-60 rounded-full bg-[#ebe5db]" aria-hidden="true" />
+                <img src="/chair.png" alt="Fauteuil et décoration Art Home" className="relative z-10 h-[360px] w-full object-contain object-bottom drop-shadow-[0_16px_14px_rgba(90,65,40,0.1)]" />
               </div>
-              <div className="pb-2">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1.5 font-sans text-xs text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
-                <h2 className="max-w-[540px] font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-[#171717] lg:text-[46px]">Beautiful Furniture Trusted By Modern Families</h2>
-                <div className="mt-8 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-5 w-5 fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <p className="mt-6 max-w-[540px] font-sans text-[15px] leading-6 text-[#5f5c57]">&quot;Premium craftsmanship, timeless designs, and outstanding customer service made this one of the best furniture purchases we&apos;ve ever made for our home interiors.&quot;</p>
-                <div className="mt-12 border-t border-[#ddd7cd] pt-10">
-                  <div className="flex items-center gap-3"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#b4883d] font-serif text-lg text-[#fffaf2]" aria-hidden="true">OB</div><div><p className="font-sans text-sm font-semibold text-[#202020]">Olivia Bennett</p><p className="mt-1 font-sans text-xs text-[#8b8780]">Homeowner</p></div><span className="ml-auto pr-2 font-serif text-7xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
+              <div className="max-w-[520px] pb-1">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
+                <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
+                <div className="mt-6 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
+                <div className="mt-5 min-h-[92px]" onPointerDown={handleDesktopPointerDown} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
+                  <p className="max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{desktopReviews[desktopIndex].text}&quot;</p>
+                </div>
+                <div className="mt-7 border-t border-[#ddd7cd] pt-7">
+                  <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b4883d] font-serif text-sm text-[#fffaf2]" aria-hidden="true">{desktopReviews[desktopIndex].author.slice(0, 2).toUpperCase()}</div><div><p className="font-sans text-[13px] font-semibold text-[#202020]">{desktopReviews[desktopIndex].author}</p><p className="mt-0.5 font-sans text-[11px] text-[#8b8780]">{desktopReviews[desktopIndex].years}</p></div><span className="ml-auto pr-2 font-serif text-6xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
+                  <div className="mt-4 flex items-center gap-3"><button type="button" onClick={() => moveDesktopReview(-1)} aria-label="Avis précédent" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">←</button><div className="flex gap-1.5" aria-label="Choisir un avis">{desktopReviews.map((review, index) => <button type="button" key={review.author} onClick={() => setDesktopIndex(index)} aria-label={`Afficher l'avis de ${review.author}`} aria-current={index === desktopIndex ? 'true' : undefined} className={`h-1.5 rounded-full transition-all ${index === desktopIndex ? 'w-5 bg-[#b4883d]' : 'w-1.5 bg-[#d7d0c5]'}`} />)}</div><button type="button" onClick={() => moveDesktopReview(1)} aria-label="Avis suivant" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">→</button></div>
                 </div>
               </div>
             </div>
