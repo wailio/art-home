@@ -18,7 +18,9 @@ export default function Home() {
       <PromotionalBanners />
       <Categories />
       <Products />
-      <CustomerReviews />
+      <div className="md:bg-[#f7f4ee] md:pt-8">
+        <CustomerReviews />
+      </div>
       <WhyChooseUs />
       <Footer />
     </main>
