@@ -83,13 +83,19 @@ export default function CustomerReviews() {
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
                 <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
                 <div className="mt-6 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <div className="mt-5 min-h-[92px]" onPointerDown={handleDesktopPointerDown} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
-                  <p className="max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{desktopReviews[desktopIndex].text}&quot;</p>
+                <div className="relative mt-5 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
+                  <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${desktopIndex * 100}%)` }}>
+                    {desktopReviews.map((review) => (
+                      <article key={review.author} className="w-full shrink-0 pr-6">
+                        <p className="min-h-[62px] max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{review.text}&quot;</p>
+                        <div className="mt-7 border-t border-[#ddd7cd] pt-7">
+                          <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b4883d] font-serif text-sm text-[#fffaf2]" aria-hidden="true">{review.author.slice(0, 2).toUpperCase()}</div><div><p className="font-sans text-[13px] font-semibold text-[#202020]">{review.author}</p><p className="mt-0.5 font-sans text-[11px] text-[#8b8780]">{review.years}</p></div><span className="ml-auto pr-2 font-serif text-6xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-7 border-t border-[#ddd7cd] pt-7">
-                  <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b4883d] font-serif text-sm text-[#fffaf2]" aria-hidden="true">{desktopReviews[desktopIndex].author.slice(0, 2).toUpperCase()}</div><div><p className="font-sans text-[13px] font-semibold text-[#202020]">{desktopReviews[desktopIndex].author}</p><p className="mt-0.5 font-sans text-[11px] text-[#8b8780]">{desktopReviews[desktopIndex].years}</p></div><span className="ml-auto pr-2 font-serif text-6xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
-                  <div className="mt-4 flex items-center gap-3"><button type="button" onClick={() => moveDesktopReview(-1)} aria-label="Avis précédent" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">←</button><div className="flex gap-1.5" aria-label="Choisir un avis">{desktopReviews.map((review, index) => <button type="button" key={review.author} onClick={() => setDesktopIndex(index)} aria-label={`Afficher l'avis de ${review.author}`} aria-current={index === desktopIndex ? 'true' : undefined} className={`h-1.5 rounded-full transition-all ${index === desktopIndex ? 'w-5 bg-[#b4883d]' : 'w-1.5 bg-[#d7d0c5]'}`} />)}</div><button type="button" onClick={() => moveDesktopReview(1)} aria-label="Avis suivant" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">→</button></div>
-                </div>
+                <div className="mt-4 flex items-center gap-3"><button type="button" onClick={() => moveDesktopReview(-1)} aria-label="Avis précédent" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">←</button><div className="flex gap-1.5" aria-label="Choisir un avis">{desktopReviews.map((review, index) => <button type="button" key={review.author} onClick={() => setDesktopIndex(index)} aria-label={`Afficher l'avis de ${review.author}`} aria-current={index === desktopIndex ? 'true' : undefined} className={`h-1.5 rounded-full transition-all ${index === desktopIndex ? 'w-5 bg-[#b4883d]' : 'w-1.5 bg-[#d7d0c5]'}`} />)}</div><button type="button" onClick={() => moveDesktopReview(1)} aria-label="Avis suivant" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">→</button></div>
               </div>
             </div>
           </div>
