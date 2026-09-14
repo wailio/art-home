@@ -230,13 +230,13 @@ function ProductCard({ product, immediate = false }: { product: Product; immedia
   const secondImage = product.images[1] ?? firstImage
 
   const card = (
-    <Link href={`/product/${product.id}`} className="group block w-56 flex-shrink-0 cursor-pointer md:w-[350px]">
+    <Link href={`/product/${product.id}`} className="group block w-56 flex-shrink-0 cursor-pointer md:w-[250px] lg:w-[270px]">
       <article className="overflow-hidden bg-white">
-        <div className="relative aspect-[4/3] overflow-hidden bg-white">
-          <img src={firstImage} alt={product.name} className="absolute inset-0 h-full w-full object-contain transition-opacity duration-300 md:group-hover:opacity-0" />
-          <img src={secondImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-contain opacity-0 transition-opacity duration-300 md:group-hover:opacity-100" />
+        <div className="relative aspect-[1/1] overflow-hidden bg-white">
+          <img src={firstImage} alt={product.name} className="absolute inset-0 h-full w-full scale-[1.14] object-contain transition-opacity duration-300 md:group-hover:opacity-0" />
+          <img src={secondImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-[1.14] object-contain opacity-0 transition-opacity duration-300 md:group-hover:opacity-100" />
         </div>
-        <div className="flex flex-col gap-2 px-1 pb-4 pt-4 md:pb-5 md:pt-5">
+        <div className="flex flex-col gap-2 px-3 pb-5 pt-4">
           <h3 className="line-clamp-2 text-sm font-normal leading-5 text-[#142947] md:text-[15px]">{product.name}</h3>
           <p className="text-xs font-normal text-[#142947] md:text-sm">{product.price}</p>
         </div>
