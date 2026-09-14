@@ -99,11 +99,11 @@ export default function CustomerReviews() {
                   <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
                 </Reveal>
                 <Reveal delay={220}>
-                <div className="mt-6 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <div className="relative mt-5 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
+                <div className="relative mt-6 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
                   <div className={`flex ${isDragging ? '' : 'transition-transform duration-500 ease-out'}`} style={{ transform: `translateX(calc(-${desktopIndex * 100}% + ${desktopDragOffset}px))` }}>
                     {desktopReviews.map((review) => (
                       <article key={review.author} className="w-full shrink-0 pr-6">
+                        <div className="mb-5 flex gap-1" aria-label={`${review.rating} étoiles`}>{Array.from({ length: review.rating }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
                         <p className="min-h-[62px] max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{review.text}&quot;</p>
                         <div className="mt-7 border-t border-[#ddd7cd] pt-7">
                           <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b4883d] font-serif text-sm text-[#fffaf2]" aria-hidden="true">{review.author.slice(0, 2).toUpperCase()}</div><div><p className="font-sans text-[13px] font-semibold text-[#202020]">{review.author}</p><p className="mt-0.5 font-sans text-[11px] text-[#8b8780]">{review.years}</p></div><span className="ml-auto pr-2 font-serif text-6xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
