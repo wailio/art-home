@@ -88,7 +88,7 @@ export default function CustomerReviews() {
         <Reveal>
           <div className="mb-4 flex h-auto items-start justify-center md:mb-0 md:h-auto">
             <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl">AVIS CLIENTS</h2>
-            <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20" aria-label="Avis clients">
+            <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20 md:animate-luxury-reveal" aria-label="Avis clients">
               <div className="relative flex h-[360px] items-end justify-center overflow-hidden">
                 <div className="absolute bottom-5 h-44 w-60 rounded-full bg-[#ebe5db]" aria-hidden="true" />
                 <img src="/chair.png" alt="Fauteuil et décoration Art Home" className="relative z-10 h-[360px] w-full object-contain object-bottom drop-shadow-[0_16px_14px_rgba(90,65,40,0.1)]" />
