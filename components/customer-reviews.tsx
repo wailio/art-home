@@ -96,7 +96,7 @@ export default function CustomerReviews() {
               </Reveal>
               <div className="max-w-[520px] pb-1">
                 <Reveal delay={140}>
-                  <div className="mb-4 inline-flex items-center border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]">Happy Customer</div>
+                  <div className="mb-4 inline-flex items-center gap-2 border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="size-1.5 rounded-full bg-[#b79357]" aria-hidden="true" />Happy Customer</div>
                   <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]"><PopTitle text="Beautiful Furniture Trusted By Modern Families" /></h2>
                 </Reveal>
                 <Reveal delay={220}>
