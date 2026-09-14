@@ -61,20 +61,20 @@ function PlatformIcon({ platform }: { platform: "instagram" | "facebook" }) {
 
 export function DesignStories() {
   return (
-    <section className="bg-[#fcfbf8] px-4 py-16 md:py-24">
-      <div className="mb-10 text-center md:mb-14">
-        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-1.5 text-sm text-neutral-600">
+    <section className="bg-[#fcfbf8] px-4 py-14 md:px-5 md:py-24">
+      <div className="mx-auto mb-10 max-w-[1240px] text-center md:mb-16">
+        <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-black/10 px-3.5 py-1 text-xs text-neutral-600 md:mb-4 md:text-sm">
           <span className="h-1.5 w-1.5 rounded-full bg-amber-600" />
           Design Stories
         </span>
-        <h2 className="text-3xl font-semibold tracking-tight text-neutral-800 md:text-5xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-neutral-800 md:text-[2.5rem] md:leading-tight">
           <PopTitle text="Modern Living Inspirations" />
         </h2>
       </div>
 
       <div
         data-lenis-prevent
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:grid md:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
+        className="mx-auto flex max-w-[1240px] gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] md:grid md:grid-cols-4 md:gap-7 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
       >
         {stories.map((item, i) => (
           <a
@@ -82,7 +82,7 @@ export function DesignStories() {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative aspect-[2/3] w-[45%] shrink-0 snap-center overflow-hidden rounded-2xl border border-black/5 shadow-sm md:aspect-[3/4] md:w-auto md:shrink md:snap-none"
+            className="group relative aspect-[2/3] w-[45%] shrink-0 snap-center overflow-hidden rounded-2xl border border-black/5 shadow-sm md:aspect-[7/10] md:w-auto md:shrink md:snap-none"
           >
             {item.type === "video" ? (
               <video
@@ -111,6 +111,14 @@ export function DesignStories() {
             </span>
           </a>
         ))}
+      </div>
+
+      <div className="mx-auto mt-10 hidden items-center justify-center gap-2 text-sm text-neutral-700 md:flex">
+        <span className="rounded-full bg-[#b79357] px-2.5 py-0.5 font-semibold text-white">Free</span>
+        <span>Let&apos;s make something great work together.</span>
+        <a href="#contact" className="font-medium text-[#a77f3f] underline underline-offset-2 transition-colors hover:text-[#85632e]">
+          Get Free Quote.
+        </a>
       </div>
     </section>
   )
