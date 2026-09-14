@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, type PointerEvent } from 'react'
 import { Star } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
+import { PopTitle } from '@/components/pop-title'
 
 const mobileReviews = [
   { author: "Adem", rating: 5, years: "il y a 4 mois", text: "" },
@@ -87,7 +88,7 @@ export default function CustomerReviews() {
       <div className="max-w-7xl mx-auto">
         <div>
           <div className="mb-4 flex h-auto items-start justify-center md:mb-0 md:h-auto">
-            <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl">AVIS CLIENTS</h2>
+            <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl"><PopTitle text="AVIS CLIENTS" /></h2>
             <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20 " aria-label="Avis clients">
               <Reveal delay={80} className="relative flex h-[360px] items-end justify-center overflow-hidden">
                 <div className="absolute bottom-5 h-44 w-60 rounded-full bg-[#ebe5db]" aria-hidden="true" />
@@ -95,8 +96,8 @@ export default function CustomerReviews() {
               </Reveal>
               <div className="max-w-[520px] pb-1">
                 <Reveal delay={140}>
-                  <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
-                  <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
+                  <div className="mb-4 inline-flex items-center gap-2 border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="size-1.5 rounded-full bg-[#b79357]" aria-hidden="true" />Happy Customer</div>
+                  <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]"><PopTitle text="Beautiful Furniture Trusted By Modern Families" /></h2>
                 </Reveal>
                 <Reveal delay={220}>
                 <div className="relative mt-6 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">

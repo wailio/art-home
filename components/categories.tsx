@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Reveal } from "@/components/Reveal"
+import { PopTitle } from "@/components/pop-title"
 
 const categories = [
   { label: "Salle à manger", href: "/all-products?category=salle-a-manger", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Salle%20a%20manger-85uRZjV0EznBuitnFCLls3n5H7Ke4F.png" },
@@ -17,11 +18,11 @@ export default function Categories() {
       <div className="mx-auto max-w-5xl px-0 md:px-2">
         <div className="mb-3 text-center md:mb-6">
           <Reveal>
-            <div className="mx-auto mb-2 inline-flex items-center gap-2 rounded-full border border-black/20 px-4 py-1.5 text-[11px] tracking-[2px] text-[#333333]">
-              <span aria-hidden="true">•</span>
+            <div className="mx-auto mb-2 inline-flex items-center gap-2 border border-black/20 px-4 py-1.5 text-[11px] tracking-[2px] text-[#333333]">
+              <span className="size-1.5 rounded-full bg-[#b79357]" aria-hidden="true" />
               <span>NOS COLLECTIONS</span>
             </div>
-            <h2 className="hidden font-serif text-3xl font-normal text-[#1A1A1A] md:block md:text-4xl">Explorer les Catégories</h2>
+            <h2 className="hidden font-serif text-3xl font-normal text-[#1A1A1A] md:block md:text-4xl"><PopTitle text="Explorer les Catégories" /></h2>
           </Reveal>
         </div>
 

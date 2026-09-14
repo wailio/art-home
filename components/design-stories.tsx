@@ -63,8 +63,8 @@ export function DesignStories() {
   return (
     <section className="bg-[#fcfbf8] px-4 py-14 md:px-5 md:py-24">
       <div className="mx-auto mb-10 max-w-[1240px] text-center md:mb-16">
-        <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-black/10 px-3.5 py-1 text-xs text-neutral-600 md:mb-4 md:text-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-amber-600" />
+        <span className="mb-3 inline-flex items-center gap-2 border border-black/10 px-3.5 py-1 text-xs text-neutral-600 md:mb-4 md:text-sm">
+          <span className="size-1.5 rounded-full bg-[#b79357]" aria-hidden="true" />
           Design Stories
         </span>
         <h2 className="text-3xl font-semibold tracking-tight text-neutral-800 md:text-[2.5rem] md:leading-tight">
