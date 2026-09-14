@@ -11,34 +11,37 @@ type StoryItem = {
   alt: string
 }
 
+const previewPhoto =
+  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/482961378_122144354264478903_1413766257335867882_n-8BYn2bmjsIR7Bifpt8Fbp3p6YyjOZZ.jpg"
+
 const stories: StoryItem[] = [
   {
     type: "image",
-    src: "/design-stories/living-room.jpg",
+    src: previewPhoto,
     href: "https://www.instagram.com/mobenia_furniture/",
     platform: "instagram",
-    alt: "Modern living room styling",
+    alt: "Elegant living room with custom curtains and seating",
   },
   {
     type: "image",
-    src: "/design-stories/kitchen.jpg",
+    src: previewPhoto,
     href: "https://www.instagram.com/mobenia_furniture/",
     platform: "instagram",
-    alt: "Modern kitchen styling",
-  },
-  {
-    type: "video",
-    src: "/design-stories/reel.mp4",
-    href: "https://www.instagram.com/mobenia_furniture/",
-    platform: "instagram",
-    alt: "Styling reel",
+    alt: "Elegant living room with custom curtains and seating",
   },
   {
     type: "image",
-    src: "/design-stories/dining-room.jpg",
+    src: previewPhoto,
+    href: "https://www.instagram.com/mobenia_furniture/",
+    platform: "instagram",
+    alt: "Elegant living room with custom curtains and seating",
+  },
+  {
+    type: "image",
+    src: previewPhoto,
     href: "https://www.facebook.com/REPLACE_WITH_YOUR_PAGE",
     platform: "facebook",
-    alt: "Dining room styling",
+    alt: "Elegant living room with custom curtains and seating",
   },
 ]
 
@@ -62,7 +65,7 @@ function PlatformBadge({ platform }: { platform: "instagram" | "facebook" }) {
 
 export function DesignStories() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+    <section className="bg-[#fcfbf8] px-4 py-16 md:py-24">
       <div className="mb-10 text-center md:mb-14">
         <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-1.5 text-sm text-neutral-600">
           <span className="h-1.5 w-1.5 rounded-full bg-amber-600" />
