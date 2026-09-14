@@ -45,21 +45,17 @@ const stories: StoryItem[] = [
   },
 ]
 
-function PlatformBadge({ platform }: { platform: "instagram" | "facebook" }) {
-  return (
-    <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur-sm">
-      {platform === "instagram" ? (
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-          <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z" />
-        </svg>
-      )}
-    </span>
+function PlatformIcon({ platform }: { platform: "instagram" | "facebook" }) {
+  return platform === "instagram" ? (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z" />
+    </svg>
   )
 }
 
@@ -107,7 +103,12 @@ export function DesignStories() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             )}
-            <PlatformBadge platform={item.platform} />
+            <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 md:group-hover:bg-black/40" />
+            <span className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-70 transition-all duration-300 md:scale-75 md:opacity-0 md:group-hover:scale-100 md:group-hover:opacity-100">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-neutral-800 shadow-md">
+                <PlatformIcon platform={item.platform} />
+              </span>
+            </span>
           </a>
         ))}
       </div>
