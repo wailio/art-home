@@ -78,8 +78,8 @@ export default function LuxuryHeader() {
           <Link href="/" className="transition-colors hover:text-[#b18a3c]">Accueil</Link>
           <div className="group relative h-full flex items-center">
             <Link href="/all-products" className="flex items-center gap-1 transition-colors hover:text-[#b18a3c]">Produits <ChevronDown className="h-4 w-4" aria-hidden="true" /></Link>
-            <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 translate-y-2 border border-black/10 bg-white p-3 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-              {productLinks.map((product) => <Link key={product.href} href={product.href} className="block px-3 py-2.5 text-sm transition-colors hover:bg-[#f7f4ee] hover:text-[#b18a3c]">{product.label}</Link>)}
+            <div className={`invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 translate-y-2 border p-3 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${isDarkHeaderPage ? "border-white/10 bg-[#34383d] text-white" : "border-black/10 bg-white text-[#151515]"}`}>
+              {productLinks.map((product) => <Link key={product.href} href={product.href} className="block px-3 py-2.5 text-sm text-inherit transition-colors hover:bg-white/10 hover:text-[#d2aa5e]">{product.label}</Link>)}
             </div>
           </div>
           <Link href="/rooms" className="transition-colors hover:text-[#b18a3c]">Pièces</Link>
