@@ -1,8 +1,10 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
+import "lenis/dist/lenis.css"
 import { Amiri, Cormorant_Garamond, Geist, Geist_Mono, Great_Vibes, Manrope, Montserrat, Noto_Sans_Arabic, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import ClientLayout from "./_client-layout"
+import { SmoothScroll } from "@/components/smooth-scroll"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -43,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${_manrope.variable} ${_montserrat.variable} ${_playfair.variable} ${_greatVibes.variable} ${_cormorant.variable} ${_notoArabic.variable} ${_amiri.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <SmoothScroll />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
