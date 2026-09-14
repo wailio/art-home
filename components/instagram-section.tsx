@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { Reveal } from '@/components/Reveal'
+import { PopTitle } from '@/components/pop-title'
 
 export default function InstagramSection() {
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function InstagramSection() {
         {/* Title */}
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-sm md:text-4xl font-serif font-bold mb-2">
-            NOUS SUIVRE SUR INSTAGRAM{' '}
+            <PopTitle text="NOUS SUIVRE SUR INSTAGRAM" />{' '}
             <span className="italic">
               <Link 
                 href="https://www.instagram.com/art_home_tex" 

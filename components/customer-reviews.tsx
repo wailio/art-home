@@ -85,22 +85,25 @@ export default function CustomerReviews() {
   return (
     <section dir="ltr" id="offres" className="bg-[#0A0A0A] px-4 py-12 md:bg-[#f7f4ee] md:px-6 md:py-20">
       <div className="max-w-7xl mx-auto">
-        <Reveal>
+        <div>
           <div className="mb-4 flex h-auto items-start justify-center md:mb-0 md:h-auto">
             <h2 className="pt-4 text-center font-serif text-2xl font-bold text-[#F0EDE6] md:hidden md:pt-8 md:text-4xl">AVIS CLIENTS</h2>
-            <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20" aria-label="Avis clients">
-              <div className="relative flex h-[360px] items-end justify-center overflow-hidden">
+            <div className="hidden w-full md:grid md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 lg:gap-20 " aria-label="Avis clients">
+              <Reveal delay={80} className="relative flex h-[360px] items-end justify-center overflow-hidden">
                 <div className="absolute bottom-5 h-44 w-60 rounded-full bg-[#ebe5db]" aria-hidden="true" />
                 <img src="/chair.png" alt="Fauteuil et décoration Art Home" className="relative z-10 h-[360px] w-full object-contain object-bottom drop-shadow-[0_16px_14px_rgba(90,65,40,0.1)]" />
-              </div>
+              </Reveal>
               <div className="max-w-[520px] pb-1">
-                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
-                <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
-                <div className="mt-6 flex gap-1" aria-label="5 étoiles">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
-                <div className="relative mt-5 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
+                <Reveal delay={140}>
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ddd7cd] px-3 py-1 font-sans text-[11px] text-[#4c4a46]"><span className="h-1.5 w-1.5 rounded-full bg-[#b4883d]" aria-hidden="true" />Happy Customer</div>
+                  <h2 className="max-w-[480px] font-sans text-[32px] font-normal leading-[1.12] tracking-[-0.035em] text-[#292725] lg:text-[36px]">Beautiful Furniture Trusted By<br />Modern Families</h2>
+                </Reveal>
+                <Reveal delay={220}>
+                <div className="relative mt-6 overflow-hidden" onPointerDown={handleDesktopPointerDown} onPointerMove={handleDesktopPointerMove} onPointerUp={handleDesktopPointerUp} onPointerCancel={handleDesktopPointerUp} style={{ cursor: isDragging ? 'grabbing' : 'grab', touchAction: 'pan-y' }} aria-live="polite">
                   <div className={`flex ${isDragging ? '' : 'transition-transform duration-500 ease-out'}`} style={{ transform: `translateX(calc(-${desktopIndex * 100}% + ${desktopDragOffset}px))` }}>
                     {desktopReviews.map((review) => (
                       <article key={review.author} className="w-full shrink-0 pr-6">
+                        <div className="mb-5 flex gap-1" aria-label={`${review.rating} étoiles`}>{Array.from({ length: review.rating }, (_, index) => <Star key={index} className="h-[18px] w-[18px] fill-[#b4883d] text-[#b4883d]" aria-hidden="true" />)}</div>
                         <p className="min-h-[62px] max-w-[520px] font-sans text-[13px] leading-5 text-[#5f5c57]">&quot;{review.text}&quot;</p>
                         <div className="mt-7 border-t border-[#ddd7cd] pt-7">
                           <div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b4883d] font-serif text-sm text-[#fffaf2]" aria-hidden="true">{review.author.slice(0, 2).toUpperCase()}</div><div><p className="font-sans text-[13px] font-semibold text-[#202020]">{review.author}</p><p className="mt-0.5 font-sans text-[11px] text-[#8b8780]">{review.years}</p></div><span className="ml-auto pr-2 font-serif text-6xl leading-none text-[#ebe5db]" aria-hidden="true">&quot;</span></div>
@@ -110,10 +113,11 @@ export default function CustomerReviews() {
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-3"><button type="button" onClick={() => moveDesktopReview(-1)} aria-label="Avis précédent" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">←</button><div className="flex gap-1.5" aria-label="Choisir un avis">{desktopReviews.map((review, index) => <button type="button" key={review.author} onClick={() => setDesktopIndex(index)} aria-label={`Afficher l'avis de ${review.author}`} aria-current={index === desktopIndex ? 'true' : undefined} className={`h-1.5 rounded-full transition-all ${index === desktopIndex ? 'w-5 bg-[#b4883d]' : 'w-1.5 bg-[#d7d0c5]'}`} />)}</div><button type="button" onClick={() => moveDesktopReview(1)} aria-label="Avis suivant" className="font-sans text-xs text-[#8b8780] hover:text-[#b4883d]">→</button></div>
+                </Reveal>
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
         <Reveal delay={100}>
         {/* Desktop - Horizontal Scroll with Mouse Hover Controls */}

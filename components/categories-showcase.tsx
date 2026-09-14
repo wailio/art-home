@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { BedDouble, LampDesk, MapPin, Sofa, Table2, PanelsTopLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { PopTitle } from '@/components/pop-title'
 
 const categories = [
   { name: 'Salon', icon: Sofa },
@@ -26,7 +27,7 @@ export default function CategoriesShowcase() {
     <section className="py-12 md:py-24 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-serif font-bold text-center text-gray-900 mb-12 md:mb-20">
-          DISCOVER OUR BEST!
+          <PopTitle text="DISCOVER OUR BEST!" />
         </h2>
 
         {/* Desktop — compact luxury row matching the reference proportions */}

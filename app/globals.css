@@ -47,8 +47,12 @@ body[data-locale="ar"] button {
 
 @media (prefers-reduced-motion: reduce) {
   .mission-logo-float,
-  .mission-logo-sway {
-    animation: none;
+  .mission-logo-sway,
+  .reveal-luxury {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    transform: none !important;
   }
 }
 
