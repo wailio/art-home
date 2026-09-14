@@ -67,7 +67,7 @@ export function DesignStories() {
           <span className="h-1.5 w-1.5 rounded-full bg-amber-600" />
           Design Stories
         </span>
-        <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 md:text-5xl">
           <PopTitle text="Modern Living Inspirations" />
         </h2>
       </div>
