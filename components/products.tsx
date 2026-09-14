@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useEffect, useRef } from "react"
+import { ChevronLeft, ChevronRight, Heart } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 import { allProducts as catalogProducts, type Product } from "@/lib/products"
 import { Reveal } from "@/components/Reveal"
 import { PopTitle } from "@/components/pop-title"
@@ -225,23 +225,30 @@ const legacyProducts: LegacyProduct[] = [
   }
 ]
 
-function ProductCard({ product, immediate = false }: { product: Product; immediate?: boolean }) {
-  const firstImage = product.images[0] ?? "/images/art-home-living-room.png"
-  const secondImage = product.images[1] ?? firstImage
-
+function ProductCard({ product, favorites, toggleFavorite, immediate = false }: { product: Product; favorites: number[]; toggleFavorite: (id: number) => void; immediate?: boolean }) {
   const card = (
-    <Link href={`/product/${product.id}`} className="group block w-56 flex-shrink-0 cursor-pointer md:w-[250px] lg:w-[270px]">
-      <article className="overflow-hidden bg-white">
-        <div className="relative aspect-[1/1] overflow-hidden bg-white">
-          <img src={firstImage} alt={product.name} className="absolute inset-0 h-full w-full scale-[1.14] object-contain transition-opacity duration-300 md:group-hover:opacity-0" />
-          <img src={secondImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-[1.14] object-contain opacity-0 transition-opacity duration-300 md:group-hover:opacity-100" />
+    <Link href={`/product/${product.id}`}>
+      <div className="group flex h-[300px] flex-shrink-0 w-56 flex-col overflow-hidden rounded-none bg-[#1A1A1A] transition-colors duration-300 cursor-pointer md:h-auto md:w-[350px]">
+          <div className="relative aspect-[4/3] w-full items-center justify-center overflow-hidden bg-[#111111]">
+            {product.discount && <div className="absolute left-2 top-2 z-10 rounded bg-[rgba(15,15,15,0.85)] px-2.5 py-1 text-[10px] font-bold text-white">-{product.discount}%</div>}
+            <img src="/images/art-home-living-room.png" alt={product.name} className="h-full w-full object-cover transition-[filter] duration-300 group-hover:brightness-105" />
+            <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id) }} aria-label={`Ajouter ${product.name} aux favoris`} className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(0,0,0,0.4)] transition-colors hover:bg-[rgba(0,0,0,0.6)]">
+              <Heart className={`h-4 w-4 ${favorites.includes(product.id) ? "fill-white text-white" : "text-white"}`} />
+            </button>
+          </div>
+          <div className="flex flex-1 flex-col justify-between bg-[#1A1A1A] p-4 md:p-5">
+            <div>
+              <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-[#A8926A]">IdealInstitute</p>
+              <h3 className="line-clamp-2 text-sm font-bold text-[#F5F2EA] md:text-base">{product.name}</h3>
+              <p className="mt-2 hidden line-clamp-2 text-[11px] leading-4 text-[#9A9A9A] md:block md:text-xs">{product.description}</p>
+            </div>
+            <div className="mt-5 flex items-center gap-3">
+              <span className="text-sm font-bold text-[#F5F2EA] md:text-base">{product.price}</span>
+              {product.originalPrice && <span className="text-[10px] text-[#6B6B6B] line-through md:text-xs">{product.originalPrice}</span>}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-2 px-3 pb-5 pt-4">
-          <h3 className="line-clamp-2 text-sm font-normal leading-5 text-[#142947] md:text-[15px]">{product.name}</h3>
-          <p className="text-xs font-normal text-[#142947] md:text-sm">{product.price}</p>
-        </div>
-      </article>
-    </Link>
+      </Link>
   )
 
   return immediate ? (
@@ -257,6 +264,7 @@ export default function Products() {
   const { locale } = useLanguage()
   const pathname = usePathname()
   const isProductsPage = pathname === "/products" || pathname === "/all-products" || pathname?.endsWith("/page")
+  const [favorites, setFavorites] = useState<number[]>([])
   const nosProduitRef = useRef<HTMLDivElement>(null)
   const modelesPretsRef = useRef<HTMLDivElement>(null)
   const hasAutoScrolled = useRef(false)
@@ -277,6 +285,12 @@ export default function Products() {
     observer.observe(element)
     return () => observer.disconnect()
   }, [])
+
+  const toggleFavorite = (id: number) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]
+    )
+  }
 
   const scrollCarouselByCard = (element: HTMLDivElement | null, direction: "left" | "right") => {
     if (!element) return
@@ -343,6 +357,8 @@ export default function Products() {
                 <ProductCard
                   immediate={i === 0 || isProductsPage}
                   product={locale === "ar" && arabicProductDescriptions[product.id] ? { ...product, description: arabicProductDescriptions[product.id] } : product}
+                  favorites={favorites}
+                    toggleFavorite={toggleFavorite}
                   />
               </div>
             ))}
@@ -385,7 +401,9 @@ export default function Products() {
                   <ProductCard
                     immediate={i === 0 || isProductsPage}
                     product={locale === "ar" && arabicProductDescriptions[product.id] ? { ...product, description: arabicProductDescriptions[product.id] } : product}
-                    />
+                    favorites={favorites}
+                    toggleFavorite={toggleFavorite}
+                  />
                 </div>
               ))}
             </div>
